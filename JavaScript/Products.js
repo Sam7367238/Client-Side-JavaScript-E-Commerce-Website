@@ -12,5 +12,10 @@ export const Products = [
     {
         name: "House",
         price: 49999.99
+    },
+
+    {
+        name: "Sofa",
+        price: 129.99
     }
 ]

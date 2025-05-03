@@ -1,11 +1,16 @@
+const emptyDisplay = document.getElementById("emptyDisplay");
 const cart = document.getElementById("cart");
 
 const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
 
 let totalAmount = 0;
 
+if (!savedCart.length) {
+    emptyDisplay.style.display = "block";
+}
+
 savedCart.forEach((element) => {
-    totalAmount += parseFloat(element.price.toFixed(2));
+    totalAmount += element.price;
 
     const div = document.createElement("div");
     const h4 = document.createElement("h4");
@@ -39,14 +44,9 @@ if (savedCart.length) {
 
     order.id = "order";
     order.addEventListener("click", orderFunc);
-    order.textContent = `Order | $${totalAmount}`;
+    order.textContent = `Order | $${totalAmount.toFixed(2)}`;
 
     document.body.appendChild(order);
-} else {
-    const existingOrder = document.getElementById("orderButton");
-    if (existingOrder) {
-        existingOrder.remove();
-    }
 }
 
 function orderFunc() {

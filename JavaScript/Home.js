@@ -30,8 +30,9 @@ if (productsList) {
 function addToCart(product) {
     cart.push(product);
 
-    localStorage.clear();
-    localStorage.setItem("cart", JSON.stringify(cart));
+    const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
+    existingCart.push(product);
+    localStorage.setItem("cart", JSON.stringify(existingCart));
 
     const blockquote = document.createElement("blockquote");
     const p = document.createElement('p');
