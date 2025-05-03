@@ -1,0 +1,1 @@
+Setup is easy, just download the files and you're good to go.
